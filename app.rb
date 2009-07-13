@@ -100,7 +100,7 @@ __END__
                 <a href="http://twitter.com/<%= status['user']['screen_name'] %>">@<%= status['user']['screen_name'] %></a>
                 <%= status['text'] %>
             </div>
-            <div style="">
+            <div style="float: right">
               <input type="checkbox">
             </div>
             <br clear="all"/>
