@@ -46,6 +46,7 @@ get '/timeline' do
 end
 
 get '/timeline/:page' do
+  @page = :page
   @tweets = @client.favorites(params[:page])
   erb :timeline
 end
