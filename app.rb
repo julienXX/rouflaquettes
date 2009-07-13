@@ -84,8 +84,8 @@ __END__
 @@ timeline
 <div class="timeline">
     <% @tweets.each do |status| %>
-      <input type="checkbox">
         <p>
+        <input type="checkbox">
             <div style="float:left; margin:5px">
                 <a href="http://twitter.com/<%= status['user']['screen_name'] %>">
                     <img src="<%= status['user']['profile_image_url'] %>" width="48" height="48"/>
