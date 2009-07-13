@@ -33,13 +33,14 @@ before do
   
 end
 
+@page = 1
+
 get '/' do
   redirect '/timeline' if @user
   erb :index
 end
 
 get '/timeline' do
-  @page = 1
   @tweets = @client.favorites
   erb :timeline
 end
