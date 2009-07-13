@@ -91,14 +91,17 @@ __END__
     <% @tweets.each do |status| %>
         <p>
             <div style="float:left; margin:5px">
-                <input type="checkbox">
+                
                 <a href="http://twitter.com/<%= status['user']['screen_name'] %>">
                     <img src="<%= status['user']['profile_image_url'] %>" width="48" height="48"/>
                 </a>
             </div>
-            <div style="top:5px">
+            <div style="">
                 <a href="http://twitter.com/<%= status['user']['screen_name'] %>">@<%= status['user']['screen_name'] %></a>
                 <%= status['text'] %>
+            </div>
+            <div style="">
+              <input type="checkbox">
             </div>
             <br clear="all"/>
         </p>
