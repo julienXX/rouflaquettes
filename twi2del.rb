@@ -10,10 +10,10 @@ require 'www/delicious'
 
 
 # Del.icio.us Auth
-delicious = WWW::Delicious.new('Dusername', 'Dpassword')
+delicious = WWW::Delicious.new('JulienXX', 'Jul*d3lic')
 
 # Twitter HTTP Auth
-httpauth = Twitter::HTTPAuth.new('Tusername', 'Tpassword')
+httpauth = Twitter::HTTPAuth.new('julienXX', 'Julien1980')
 twitter = Twitter::Base.new(httpauth)
 
 twitter.favorites.each do |tweet|
