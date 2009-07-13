@@ -1,3 +1,4 @@
+#!/usr/bin/env rubygems
 require 'rubygems'
 require 'sinatra'
 require 'twitter_oauth'
