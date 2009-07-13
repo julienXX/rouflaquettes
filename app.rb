@@ -30,6 +30,7 @@ before do
     :secret => session[:secret_token]
   )
   @rate_limit_status = @client.rate_limit_status
+  @page = 1
   
 end
 
