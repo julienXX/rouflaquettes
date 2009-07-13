@@ -76,35 +76,3 @@ get '/auth' do
 end
 
 
-
-use_in_file_templates!
-
-__END__
-
-@@ index
-<div id="connect_button">
-    <a href="/connect"><img src="sign_in_with_twitter.gif"/></a>
-</div>
-
-@@ timeline
-<div class="timeline">
-    <% @tweets.each do |status| %>
-        <p>
-            <div style="float:left; margin:5px">
-                
-                <a href="http://twitter.com/<%= status['user']['screen_name'] %>">
-                    <img src="<%= status['user']['profile_image_url'] %>" width="48" height="48"/>
-                </a>
-            </div>
-            <div style="">
-                <a href="http://twitter.com/<%= status['user']['screen_name'] %>">@<%= status['user']['screen_name'] %></a>
-                <%= status['text'] %>
-            </div>
-            <div style="float: right">
-              <input type="checkbox">
-            </div>
-            <br clear="all"/>
-        </p>
-    <% end %>
-</div>
-
