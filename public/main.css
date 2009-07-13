@@ -16,6 +16,11 @@ h2 {font-size:20px;}
   color:red;
 }
 
+.header {
+  margin:0 auto; 
+  width:700px
+}
+
 .timeline {
   margin:0 auto; 
   width:700px
