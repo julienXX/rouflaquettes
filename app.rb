@@ -30,7 +30,6 @@ before do
     :secret => session[:secret_token]
   )
   @rate_limit_status = @client.rate_limit_status
-  @page = 1
   
 end
 
@@ -40,6 +39,7 @@ get '/' do
 end
 
 get '/timeline' do
+  @page = 1
   @tweets = @client.favorites
   erb :timeline
 end
