@@ -96,7 +96,7 @@ __END__
                     <img src="<%= status['user']['profile_image_url'] %>" width="48" height="48"/>
                 </a>
             </div>
-            <div style="">
+            <div style="top:5px">
                 <a href="http://twitter.com/<%= status['user']['screen_name'] %>">@<%= status['user']['screen_name'] %></a>
                 <%= status['text'] %>
             </div>
