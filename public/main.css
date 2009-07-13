@@ -24,4 +24,5 @@ h2 {font-size:20px;}
 .timeline {
   margin:0 auto; 
   width:700px
+  border: 1px solid #cacaca;
 }
