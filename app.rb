@@ -39,7 +39,7 @@ get '/' do
 end
 
 get '/timeline' do
-  @tweets = @client.favorites.page => '2'
+  @tweets = @client.favorites
   erb :timeline
 end
 
