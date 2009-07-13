@@ -83,7 +83,7 @@ __END__
 
 @@ timeline
 <div class="timeline">
-    <% tweets.each do |status| %>
+    <% @tweets.each do |status| %>
         <p>
             <div style="float:left; margin:5px">
                 <a href="http://twitter.com/<%= status['user']['screen_name'] %>">
