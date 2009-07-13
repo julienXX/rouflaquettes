@@ -12,8 +12,8 @@ delicious = WWW::Delicious.new('JulienXX', 'Jul*d3lic')
 
 before do
   @client = OAuth::Consumer.new(
-    'consumer token', 
-    'consumer secret', 
+    'Ob88dhyY3G6F04NgHZrCA', 
+    'WbWsanzbO8WRcghMBSByIasp7Lyzg63huvYxTGDIw', 
     {:site => 'http://twitter.com'}
   )
 end
@@ -28,7 +28,7 @@ get '/' do
   erb :index
 end
 
-get '/fav' do
+get '/favorites' do
   erb :show
 end
 
@@ -50,17 +50,10 @@ __END__
 </div>
 
 @@ show
-<html>
-  <head>
-  </head>
- 
-  <body>
-    <h1>Favorites</h1>
-    <ul>
-      <% @twitter.favorites(:page => 2).each do |tweet| %>
-        <li><%= tweet.text %></li>
-      <% end %>
-    </ul>
-  </body>
-</html>
+<h1>Favorites</h1>
+<ul>
+  <% @twitter.favorites(:page => 2).each do |tweet| %>
+  <li><%= tweet.text %></li>
+  <% end %>
+</ul>
 
