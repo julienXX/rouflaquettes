@@ -40,7 +40,7 @@ get '/' do
 end
 
 get '/timeline' do
-  
+  @tweets = @client.friends_timeline
   erb :timeline
 end
 
@@ -83,9 +83,20 @@ __END__
 </div>
 
 @@ timeline
-<h1>Favorites</h1>
-<ul>
-  <%= @client.public_timeline.each{ |tweet| puts tweet.inspect } %>
-  
-</ul>
+<div class="timeline">
+    <% tweets.each do |status| %>
+        <p>
+            <div style="float:left; margin:5px">
+                <a href="http://twitter.com/<%= status['user']['screen_name'] %>">
+                    <img src="<%= status['user']['profile_image_url'] %>" width="48" height="48"/>
+                </a>
+            </div>
+            <div style="">
+                <a href="http://twitter.com/<%= status['user']['screen_name'] %>">@<%= status['user']['screen_name'] %></a>
+                <%= status['text'] %>
+            </div>
+            <br clear="all"/>
+        </p>
+    <% end %>
+</div>
 
