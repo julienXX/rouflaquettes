@@ -44,6 +44,12 @@ get '/timeline' do
   erb :timeline
 end
 
+get '/timeline/:page' do
+  @page = :page.to_i
+  @tweets = @client.favorites(@page)
+  erb :timeline
+end
+
 # store the request tokens and send to Twitter
 get '/connect' do
   request_token = @client.request_token
