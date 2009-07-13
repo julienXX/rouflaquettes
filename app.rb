@@ -10,6 +10,10 @@ delicious = WWW::Delicious.new('JulienXX', 'Jul*d3lic')
 # httpauth = Twitter::HTTPAuth.new('julienXX', 'Julien1980')
 # twitter = Twitter::Base.new(httpauth)
 
+configure do
+  set :sessions, true
+end
+
 before do
   # @oauth = OAuth::Consumer.new(
   #       'Ob88dhyY3G6F04NgHZrCA', 
@@ -29,12 +33,6 @@ before do
 end
 
 get '/' do
-  # @results = Twitter::Search.new(' "ruby" ')
-  #     @results.per_page(10)
-  # 
-  #     erb :index
-  # @httpauth = Twitter::HTTPAuth.new('julienXX', 'Julien1980')
-  #   @twitter = Twitter::Base.new(@httpauth)
   redirect '/timeline' if @user
   erb :index
 end
