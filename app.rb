@@ -75,4 +75,12 @@ get '/auth' do
   end
 end
 
+get '/disconnect' do
+  session[:user] = nil
+  session[:request_token] = nil
+  session[:request_token_secret] = nil
+  session[:access_token] = nil
+  session[:secret_token] = nil
+  redirect '/'
+end
 
