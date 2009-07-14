@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title>Twitter2Delicious</title>
+    <link href="/main.css" media="screen" rel="Stylesheet" type="text/css" />
+</head>
+ 
+<body>
+  <div id="nav" style="float:right">
+      <p>
+        <% if @user %>
+          <a href='/disconnect'>Logout</a>
+        <% end %>
+      </p>
+  </div>
+  <div class="header">
+    <h1>Convert your Twitter favorites to Del.icio.us bookmarks</h1>
+  </div>
+          
+  <%= yield %>
+  
+</body>
+</html>
