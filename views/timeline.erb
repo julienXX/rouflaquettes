@@ -21,7 +21,9 @@
   <% end %>
   
   <div style="float: left">
-    <a href="http://sideburns.heroku.com/timeline/<%= @page.to_i - 1 %>">Previous page</a>
+    <% if @page.to_i > 0 %>
+      <a href="http://sideburns.heroku.com/timeline/<%= @page.to_i - 1 %>">Previous page</a>
+    <% end %>
   </div>
 
   <div style="float: right">
