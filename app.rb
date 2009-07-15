@@ -21,9 +21,7 @@ before do
   )
   @rate_limit_status = @client.rate_limit_status
   @page = 1
-  
 end
-
 
 get '/' do
   redirect '/timeline' if @user
