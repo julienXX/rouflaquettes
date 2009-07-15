@@ -24,7 +24,8 @@ h2 {font-size:20px;}
 
 .header {
   margin:0 auto; 
-  width:700px
+  width:700px;
+  text-align:center;
 }
 
 .timeline {
