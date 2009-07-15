@@ -6,7 +6,7 @@ h2 {font-size:24px;}
 
 #content {
     margin:0 auto;
-    width:850px;
+    width:600px;
 }
 
 #connect_button {
@@ -18,17 +18,17 @@ h2 {font-size:24px;}
 
 .nav {
 	margin:0 auto;
-	width:700px;
+	width:600px;
 	text-align: right;
 }
 
 .header {
   margin:0 auto; 
-  width:700px;
+  width:600px;
   text-align:center;
 }
 
 .timeline {
   margin:0 auto; 
-  width:700px;
+  width:600px;
 }
