@@ -5,17 +5,38 @@ require 'twitter_oauth'
 require 'www/delicious'
 
 # Del.icio.us Auth
+<<<<<<< HEAD:app.rb
 delicious = WWW::Delicious.new('username', 'password')
+=======
+delicious = WWW::Delicious.new('JulienXX', 'Jul*d3lic')
+
+# # Twitter HTTP Auth
+# httpauth = Twitter::HTTPAuth.new('julienXX', 'Julien1980')
+# twitter = Twitter::Base.new(httpauth)
+>>>>>>> ac2ca5a036d16761eac90a7ccc771924c8d3a6f2:app.rb
 
 configure do
   set :sessions, true
 end
 
 before do
+<<<<<<< HEAD:app.rb
   @user = session[:user]
   @client = TwitterOAuth::Client.new(
     :consumer_key => 'Ob88dhyY3G6F04NgHZrCA', #replace with your own consumer key
     :consumer_secret => 'WbWsanzbO8WRcghMBSByIasp7Lyzg63huvYxTGDIw', #replace with your own consumer secret
+=======
+  # @oauth = OAuth::Consumer.new(
+  #       'Ob88dhyY3G6F04NgHZrCA', 
+  #       'WbWsanzbO8WRcghMBSByIasp7Lyzg63huvYxTGDIw', 
+  #       {:site => 'http://twitter.com'}
+  #     )
+  
+  @user = session[:user]
+  @client = TwitterOAuth::Client.new(
+    :consumer_key => 'Ob88dhyY3G6F04NgHZrCA',
+    :consumer_secret => 'WbWsanzbO8WRcghMBSByIasp7Lyzg63huvYxTGDIw',
+>>>>>>> ac2ca5a036d16761eac90a7ccc771924c8d3a6f2:app.rb
     :token => session[:access_token],
     :secret => session[:secret_token]
   )
