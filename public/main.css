@@ -18,6 +18,7 @@ h2 {font-size:20px;}
 
 #nav {
 	margin:0 auto;
+	width:700px;
 }
 
 .header {
@@ -27,5 +28,5 @@ h2 {font-size:20px;}
 
 .timeline {
   margin:0 auto; 
-  width:700px
+  width:700px;
 }
