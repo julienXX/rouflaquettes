@@ -29,7 +29,7 @@ get '/' do
 end
 
 get '/timeline' do
-  @tweets = @client.favorites.from_user("Farzy")
+  @tweets = @client.id
   erb :timeline
 end
 
