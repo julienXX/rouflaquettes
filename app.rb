@@ -19,7 +19,14 @@ before do
     :token => session[:access_token],
     :secret => session[:secret_token]
   )
-  @rate_limit_status = @client.rate_limit_status
+  
+  request_uri = case request.env['REQUEST_URI']
+    when /\.css$/ : :css
+    when /\.js$/  : :js
+    else          :html
+  end
+  content_type CONTENT_TYPES[request_uri], :charset => 'utf-8'
+  
   @page = 1
 end
 
