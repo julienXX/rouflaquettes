@@ -1,28 +1,41 @@
 <div class="timeline">
-    <% @tweets.each do |status| %>
-        <p>
-            <div style="float:left; margin:5px">
-                
-                <a href="http://twitter.com/<%= status['user']['screen_name'] %>">
-                    <img src="<%= status['user']['profile_image_url'] %>" width="48" height="48"/>
-                </a>
-            </div>
-            <div style="">
-                <a href="http://twitter.com/<%= status['user']['screen_name'] %>">@<%= status['user']['screen_name'] %></a>
-                <%= status['text'] %>
-            </div>
-            <div style="float: right">
-              <input type="checkbox">
-            </div>
-            <br clear="all"/>
-        </p>
-    <% end %>
+  <div id="nav" style="float:right">
+    <p>
+    <% if @user %>
+      <a href='/disconnect'>Logout</a>
+      <% end %>
+    </p>
+  </div>
+  
+  <% @tweets.each do |status| %>
+    <p>
+    <div style="float:left; margin:5px">
+      <a href="http://twitter.com/<%= status['user']['screen_name'] %>">
+      <img src="<%= status['user']['profile_image_url'] %>" width="48" height="48"/>
+      </a>
+    </div>
+      
+    <div style="">
+      <a href="http://twitter.com/<%= status['user']['screen_name'] %>">@<%= status['user']['screen_name'] %></a>
+      <%= status['text'] %>
+    </div>
+      
+    <div style="float: right">
+      <input type="checkbox">
+    </div>
+      
+    <br clear="all"/>
+    </p>
+  <% end %>
+  
     <div style="float: left">
       <a href="http://sideburns.heroku.com/timeline/<%= @page.to_i - 1 %>">Previous page</a>
     </div>
+
     <div style="float: right">
       <a href="http://sideburns.heroku.com/timeline/<%= @page.to_i + 1 %>">Next page</a>
     </div>
+
 </div>
 
 <!-- <div style="float: right">
