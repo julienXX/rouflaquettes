@@ -4,6 +4,8 @@ require 'sinatra'
 require 'twitter_oauth'
 require 'www/delicious'
 
+CONTENT_TYPES = {:html => 'text/html', :css => 'text/css', :js  => 'application/javascript'}
+
 # Del.icio.us Auth
 delicious = WWW::Delicious.new('username', 'password')
 
