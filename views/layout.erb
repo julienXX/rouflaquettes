@@ -5,13 +5,15 @@
 </head>
  
 <body>
+  
   <div class="nav">
     <p>
-      <% if @user %>
-        <a href='/disconnect'>Logout</a>
-      <% end %>
+    <% if @user %>
+      <a href='/disconnect'>Logout</a>
+    <% end %>
     </p>
   </div>
+  
   <div class="header">
     <h1>Convert your Twitter favorites to Del.icio.us bookmarks</h1>
   </div>
@@ -19,6 +21,8 @@
   <%= yield %>
   
   <div class="footer">
+    <p></p>
   </div>
+
 </body>
 </html>
