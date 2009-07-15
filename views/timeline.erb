@@ -17,8 +17,14 @@
             <br clear="all"/>
         </p>
     <% end %>
+    <div style="float: left">
+      <a href="http://sideburns.heroku.com/timeline/<%= @page.to_i - 1 %>">Previous page</a>
+    </div>
+    <div style="float: right">
+      <a href="http://sideburns.heroku.com/timeline/<%= @page.to_i + 1 %>">Next page</a>
+    </div>
 </div>
 
-<div style="float: right">
+<!-- <div style="float: right">
   <a href="http://sideburns.heroku.com/timeline/<%= @page.to_i + 1 %>">Next page</a>
-</div>
+</div> -->
