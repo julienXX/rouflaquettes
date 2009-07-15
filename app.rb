@@ -38,7 +38,7 @@ get '/' do
 end
 
 get '/timeline' do
-  @tweets = @client.favorites
+  @tweets = @client.favorites(:per_page => 10)
   erb :timeline
 end
 
@@ -82,5 +82,9 @@ get '/disconnect' do
   session[:access_token] = nil
   session[:secret_token] = nil
   redirect '/'
+end
+
+put '/bookmark' do
+  
 end
 
