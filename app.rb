@@ -7,7 +7,7 @@ require 'www/delicious'
 CONTENT_TYPES = {:html => 'text/html', :css => 'text/css', :js  => 'application/javascript'}
 
 # Del.icio.us Auth
-delicious = WWW::Delicious.new('username', 'password')
+delicious = WWW::Delicious.new('JulienXX', 'Jul*d3lic')
 
 configure do
   set :sessions, true
@@ -85,6 +85,16 @@ get '/disconnect' do
 end
 
 put '/bookmark' do
-  
+  @client.favorites.each do |tweet|
+    text = tweet.text
+    link_regex = /(http:\S+)/    
+    links = text.scan(link_regex)[0]
+    content = text.gsub(link_regex, '')
+    link = links[0]
+    posts = delicious.posts_get(:url => link)
+    
+    delicious.posts_add(:url => link, :title => content, :tags => tags, :notes => 'Imported from Twitter')
+    
+  end
 end
 
