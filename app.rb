@@ -38,10 +38,6 @@ get '/' do
 end
 
 get '/timeline' do
-  def favorites(page=1, per_page = 10)
-    oauth_response = access_token.get("/favorites.json?page=#{page}&rpp=#{per_page}")
-    JSON.parse(oauth_response.body)
-  end
   @tweets = @client.favorites
   erb :timeline
 end
