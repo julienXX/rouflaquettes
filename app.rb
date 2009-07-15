@@ -9,6 +9,11 @@ CONTENT_TYPES = {:html => 'text/html', :css => 'text/css', :js  => 'application/
 # Del.icio.us Auth
 delicious = WWW::Delicious.new('username', 'password')
 
+def favorites(page=1, per_page = 10)
+  oauth_response = access_token.get("/favorites.json?page=#{page}&rpp=#{per_page}")
+  JSON.parse(oauth_response.body)
+end
+
 configure do
   set :sessions, true
 end
