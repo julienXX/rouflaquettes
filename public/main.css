@@ -18,7 +18,8 @@ h2 {font-size:20px;}
 
 .nav {
 	margin:0 auto;
-	width:850px;
+	width:700px;
+	text-align: right;
 }
 
 .header {
