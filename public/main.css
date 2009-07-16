@@ -31,4 +31,5 @@ h2 {font-size:24px;}
 .timeline {
   margin:0 auto; 
   width:600px;
+  border:1px;
 }
