@@ -93,10 +93,10 @@ post '/bookmark' do
       content = tweet['text'].gsub(link_regex, '')
     
       delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported with Sideburns')
-      redirect '/logout'
     else
       redirect '/'
     end
+    redirect '/disconnect'
   end
 end
 
