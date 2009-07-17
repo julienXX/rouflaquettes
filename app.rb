@@ -84,7 +84,7 @@ get '/disconnect' do
   redirect '/'
 end
 
-put '/bookmark' do
+post '/bookmark' do
   @client.favorites.each do |tweet|
     text = tweet.text
     link_regex = /(http:\S+)/    
