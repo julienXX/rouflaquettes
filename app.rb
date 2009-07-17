@@ -87,7 +87,7 @@ end
 post '/bookmark' do
   @client.favorites.each do |tweet|
     id = tweet['id']
-    if params[:id.to_s] != nil
+    if params[:id] != nil
       link_regex = /(http:\S+)/    
       links = tweet['text'].scan(link_regex)[0]
       content = tweet['text'].gsub(link_regex, '')
