@@ -86,7 +86,7 @@ end
 
 post '/bookmark' do
   @client.favorites.each do |tweet|
-    if params[:"check_#{tweet['id'].to_s}"] = nil
+    if params["check_#{tweet['id'].to_s}"].nil?
       redirect '/disconnect'
     else
       link_regex = /(http:\S+)/    
