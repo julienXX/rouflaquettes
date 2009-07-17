@@ -93,7 +93,7 @@ post '/bookmark' do
     link = links[0]
     posts = delicious.posts_get(:url => link)
     
-    delicious.posts_add(:url => link, :title => content, :tags => tags, :notes => 'Imported from Twitter')
+    delicious.posts_add(:url => link, :title => content, :notes => 'Imported from Twitter')
     
   end
 end
