@@ -86,15 +86,11 @@ end
 
 post '/bookmark' do
   @client.favorites.each do |tweet|
-    text = tweet['text']
     link_regex = /(http:\S+)/    
-    links = text.scan(link_regex)[0]
-    content = text.gsub(link_regex, '')
-    link = links[0]
-    posts = delicious.posts_get(:url => link)
+    links = tweet['text'].scan(link_regex)[0]
+    content = tweet['text'].gsub(link_regex, '')
     
-    delicious.posts_add(:url => link, :title => content, :notes => 'Imported from Twitter')
-    
+    delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported with Sideburns')
   end
 end
 
