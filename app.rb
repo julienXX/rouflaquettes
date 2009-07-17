@@ -87,12 +87,13 @@ end
 post '/bookmark' do
   @client.favorites.each do |tweet|
     @check = 'check_' + tweet['id'].to_s
-    if params[:check] != nil
+    if params[:@check] != nil
       link_regex = /(http:\S+)/    
       links = tweet['text'].scan(link_regex)[0]
       content = tweet['text'].gsub(link_regex, '')
     
       delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported with Sideburns')
+      redirect '/logout'
     else
       redirect '/'
     end
