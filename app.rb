@@ -93,6 +93,8 @@ post '/bookmark' do
       content = tweet['text'].gsub(link_regex, '')
     
       delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported with Sideburns')
+    else
+      redirect '/'
     end
   end
 end
