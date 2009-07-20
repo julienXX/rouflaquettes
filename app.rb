@@ -93,7 +93,7 @@ post '/bookmark' do
       content = tweet['text'].gsub(link_regex, '')
     
       #delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
-      #{tweet['id']}
+      '#{tweet['id']}'
     end
   end
 end
