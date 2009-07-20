@@ -87,13 +87,14 @@ end
 
 post '/bookmark' do
   @client.favorites.each do |tweet|
-    if params["check_#{tweet['id']}"] != 0
-      link_regex = /(http:\S+)/    
-      links = tweet['text'].scan(link_regex)[0]
-      content = tweet['text'].gsub(link_regex, '')
-    
-      delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
-    end
+    erb #{tweet['id']}
+    # if params["check_#{tweet['id']}"] != 0
+    #       link_regex = /(http:\S+)/    
+    #       links = tweet['text'].scan(link_regex)[0]
+    #       content = tweet['text'].gsub(link_regex, '')
+    #     
+    #       delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
+    #     end
   end
 end
 
