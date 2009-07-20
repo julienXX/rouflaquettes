@@ -8,7 +8,7 @@ require 'erb'
 CONTENT_TYPES = {:html => 'text/html', :css => 'text/css', :js  => 'application/javascript'}
 
 # Del.icio.us Auth
-delicious = WWW::Delicious.new('JulienXX', 'Jul*d3lic')
+delicious = WWW::Delicious.new('julienTEST', 'mikros0')
 
 configure do
   set :sessions, true
@@ -92,8 +92,7 @@ post '/bookmark' do
       links = tweet['text'].scan(link_regex)[0]
       content = tweet['text'].gsub(link_regex, '')
     
-      #delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
-      "#{tweet['id']}"
+      delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
     end
   end
 end
