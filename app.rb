@@ -3,6 +3,7 @@ require 'rubygems'
 require 'sinatra'
 require 'twitter_oauth'
 require 'www/delicious'
+require 'erb'
 
 CONTENT_TYPES = {:html => 'text/html', :css => 'text/css', :js  => 'application/javascript'}
 
