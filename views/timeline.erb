@@ -13,8 +13,7 @@
     </div>
       
     <div style="float: right">
-      <% @id = status['id'] %>
-      <input type="checkbox" name="<%= "check_"+ status['id'].to_s %>" value="<%= "check_"+ status['id'].to_s %>">
+      <input type="checkbox" name="<%= status['id'].to_s %>" value="<%= status['id'].to_s %>">
     </div>
       
     <br clear="all"/>
