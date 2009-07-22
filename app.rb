@@ -92,7 +92,6 @@ post '/bookmark' do
     @check = "check_" + "#{tweet['id']}"
     if params[@check].to_i == 1
       @ids.push("#{tweet['id']},\n")
-      next
     else
       @ids.push(@i.to_s + ',')
       @i = @i +1
