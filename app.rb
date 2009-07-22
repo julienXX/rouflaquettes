@@ -90,7 +90,7 @@ post '/bookmark' do
   
   @client.favorites.each do |tweet|
     if params["check_#{tweet['id']}"].nil?
-      erb "No tweets selected!"
+      next
     else
       @ids << tweet['id']
     end
