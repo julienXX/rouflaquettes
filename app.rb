@@ -90,13 +90,17 @@ post '/bookmark' do
   
   @client.favorites.each do |tweet|
     if params["check_#{tweet['id']}"].nil?
-      erb "No tweets selected!"
+      
     else
       @ids << tweet['id']
       
     end
   end
-  erb "id selected: <%= @ids %>"
+  if @ids.empty?
+    erb "No tweets selected!"
+  else
+    erb "id selected: <%= @ids %>"
+  end
   # link_regex = /(http:\S+)/    
   #   links = tweet['text'].scan(link_regex)[0]
   #   content = tweet['text'].gsub(link_regex, '')
