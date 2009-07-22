@@ -86,16 +86,14 @@ get '/disconnect' do
 end
 
 post '/bookmark' do
-  @client.favorites.each do |tweet|
-    @check = params["check_#{tweet['id']}"]
-    erb :show
-    # if params["check_#{tweet['id']}"] != 0
-    #       link_regex = /(http:\S+)/    
-    #       links = tweet['text'].scan(link_regex)[0]
-    #       content = tweet['text'].gsub(link_regex, '')
-    #     
-    #       delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
-    #     end
+  #@client.favorites.each do |tweet|
+    params["check_#{tweet['id']}"].nil?.each do
+      link_regex = /(http:\S+)/    
+      links = tweet['text'].scan(link_regex)[0]
+      content = tweet['text'].gsub(link_regex, '')
+            
+      delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
+    end
   end
 end
 
