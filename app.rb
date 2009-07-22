@@ -94,7 +94,7 @@ post '/bookmark' do
     #     else
     #       @ids.push(tweet['id'])
     #     end
-    erb "selected: <%= params[tweet['id']] %>"
+    erb "selected: <%= params["tweet['id']"] %>"
   end
   
 
