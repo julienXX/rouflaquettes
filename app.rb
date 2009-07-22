@@ -92,7 +92,7 @@ post '/bookmark' do
     if params["check_#{tweet['id']}"] == '1'
       @ids.push('toto')
     else
-      @ids << params["check_#{tweet['id']}"]
+      @ids << params["check_#{tweet['id']}"].to_s
     end
   end
   erb "id selected: <%= @ids %>"
