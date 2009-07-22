@@ -91,7 +91,7 @@ post '/bookmark' do
   if params[:"#{tweet['id']}"] != 0
     @ids.push('toto')
   else
-    @ids.push("#{tweet['id']}")
+    @ids.push('fuck')
   end
   erb "selected <%= @ids %>"
 end
