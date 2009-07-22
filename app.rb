@@ -88,7 +88,7 @@ end
 post '/bookmark' do
   @client.favorites.each do |tweet|
     if params["#{tweet['id']}"].nil?
-      redirect '/true'
+      redirect '/timeline'
       
     else
       redirect '/false'
