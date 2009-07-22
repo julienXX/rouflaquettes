@@ -87,7 +87,9 @@ end
 
 post '/bookmark' do
   @favs = Array.new(@client.favorites)
-  erb "Tweets: <%= @favs[1] %>"
+  @favs.each do |tweet|
+  erb "Tweets: <%= tweet['id'] %>"
+end
   # @client.favorites.each do |tweet|
   #     if params["check_#{tweet['id']}"].nil?
   #       link_regex = /(http:\S+)/    
