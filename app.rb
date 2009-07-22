@@ -86,6 +86,6 @@ get '/disconnect' do
 end
 
 post '/bookmark' do
-  selected = params
-  "<%= selected %>"
+  @selected = params
+  "<%= @selected %>"
 end
