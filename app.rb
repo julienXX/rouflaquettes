@@ -88,14 +88,15 @@ end
 post '/bookmark' do
   @ids = Array.new
   @client.favorites.each do |tweet|
-    @param = params[tweet['id']]
+    #@param = params[tweet['id']]
     # if params["check_#{tweet['id']}"].nil?
     #       @ids.push(@param)
     #     else
-           @ids.push(tweet['id'])
+    #       @ids.push(tweet['id'])
     #     end
+    erb "selected: <%= params[tweet['id']] %>"
   end
-  erb "id selected: <%= params[tweet['id']] %>"
+  
 
   # link_regex = /(http:\S+)/    
   #   links = tweet['text'].scan(link_regex)[0]
