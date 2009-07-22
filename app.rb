@@ -86,13 +86,17 @@ get '/disconnect' do
 end
 
 post '/bookmark' do
-  @ids = Array.new
   @client.favorites.each do |tweet|
-  if params["#{tweet['id']}"].nil?
-    @ids.push('toto')
-  else
-    @ids.push('fuck')
+    if params[:"check_#{tweet['id'].to_s}"].nil?
+      #redirect '/disconnect'
+      erb "selected: <%= tweet['id'] %>"
+    else
+      erb "selected: <%= tweet['text'] %>"
+      #link_regex = /(http:\S+)/    
+      #links = tweet['text'].scan(link_regex)[0]
+      #content = tweet['text'].gsub(link_regex, '')
+
+      #delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
+    end
   end
-  erb "selected <%= @ids %>"
-end
 end
