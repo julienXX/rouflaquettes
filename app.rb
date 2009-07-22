@@ -86,16 +86,16 @@ get '/disconnect' do
 end
 
 post '/bookmark' do
-  @ids = Array.new
+  ids = Array.new
   
   @client.favorites.each do |tweet|
     if params["check_#{tweet['id']}"].nil?
       next
     else
-      @ids << tweet['id']
+      ids.push(tweet['id'])
     end
   end
-  erb "id selected: <%= @ids %>"
+  erb "id selected: <%= ids %>"
 
   # link_regex = /(http:\S+)/    
   #   links = tweet['text'].scan(link_regex)[0]
