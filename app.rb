@@ -91,6 +91,8 @@ post '/bookmark' do
     @param = params["check_#{tweet['id']}"]
     if params["check_#{tweet['id']}"].nil?
       @ids.push(@param)
+    else
+      @ids.push(@param)
     end
   end
   erb "id selected: <%= @ids %>"
