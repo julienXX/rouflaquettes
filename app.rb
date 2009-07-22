@@ -90,10 +90,11 @@ post '/bookmark' do
   @i = 1
   @client.favorites.each do |tweet|
     if params["check_#{tweet['id']}"] != nil
+      @ids.push("#{tweet['id']},\n")
+      
+    else
       @ids.push(@i.to_s + ',')
       @i = @i +1
-    else
-      @ids.push("#{tweet['id']},\n")
     end
   end
   erb "id selected: <%= @ids %>"
