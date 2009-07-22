@@ -95,11 +95,8 @@ post '/bookmark' do
       @ids << tweet['id']
     end
   end
-  if @ids.empty?
-    erb "No tweets selected!"
-  else
-    erb "id selected: <%= @ids %>"
-  end
+  erb "id selected: <%= @ids %>"
+
   # link_regex = /(http:\S+)/    
   #   links = tweet['text'].scan(link_regex)[0]
   #   content = tweet['text'].gsub(link_regex, '')
