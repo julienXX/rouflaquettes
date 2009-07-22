@@ -86,11 +86,13 @@ get '/disconnect' do
 end
 
 post '/bookmark' do
+  @ids = Array.new
   @client.favorites.each do |tweet|
-  if params[:"#{tweet['id'].to_s}"] = nil
-    'nil'
+  if params[:"#{tweet['id']}"] != 0
+    @ids.push('toto')
   else
-    'not nil'
+    @ids.push("#{tweet['id']}")
   end
+  erb "selected <%= @ids %>"
 end
 end
