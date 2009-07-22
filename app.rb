@@ -89,7 +89,7 @@ post '/bookmark' do
   @ids = Array.new
   
   @client.favorites.each do |tweet|
-    if params["check_#{tweet['id']}"].to_i == '0'
+    if params["check_#{tweet['id']}"].to_i == 0
       @ids.push('toto')
       next
     else
