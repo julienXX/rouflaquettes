@@ -86,9 +86,5 @@ get '/disconnect' do
 end
 
 post '/bookmark' do
-  @client.favorites.each do |tweet|
-    if params["#{tweet['id']}"].nil?
-    else
-    end
-  end
+  
 end
