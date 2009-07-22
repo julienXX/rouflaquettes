@@ -87,11 +87,11 @@ end
 
 post '/bookmark' do
   @client.favorites.each do |tweet|
-    if params["check_#{tweet['id']}"].nil?
-      #redirect '/disconnect'
-      "selected: #{tweet['id']}"
+    if params["#{tweet['id']}"].nil?
+      redirect '/true'
+      
     else
-      "selected: #{tweet['text']}"
+      redirect '/false'
       #link_regex = /(http:\S+)/    
       #links = tweet['text'].scan(link_regex)[0]
       #content = tweet['text'].gsub(link_regex, '')
