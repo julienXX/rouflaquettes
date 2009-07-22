@@ -87,7 +87,8 @@ end
 
 post '/bookmark' do
   @client.favorites.each do |tweet|
-    "#{tweet['id']}"
+    @check = params["check_#{tweet['id']}"]
+    erb :show
     # if params["check_#{tweet['id']}"] != 0
     #       link_regex = /(http:\S+)/    
     #       links = tweet['text'].scan(link_regex)[0]
