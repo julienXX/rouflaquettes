@@ -91,4 +91,6 @@ post '/bookmark' do
     'nil'
   else
     'not nil'
+  end
+end
 end
