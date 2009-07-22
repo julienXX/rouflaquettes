@@ -86,6 +86,9 @@ get '/disconnect' do
 end
 
 post '/bookmark' do
-  @selected = params
-  "<%= @selected %>"
+  @client.favorites.each do |tweet|
+  if params[:"#{tweet['id'].to_s}"] = nil
+    'nil'
+  else
+    'not nil'
 end
