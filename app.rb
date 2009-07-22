@@ -89,7 +89,7 @@ post '/bookmark' do
   @ids = Array.new
   @client.favorites.each do |tweet|
     @param = params["check_#{tweet['id']}"]
-    if params["check_#{tweet['id']}"] == "0"
+    if params["check_#{tweet['id']}"].nil?
       @ids.push(@param)
     end
   end
