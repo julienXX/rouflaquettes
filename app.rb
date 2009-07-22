@@ -95,7 +95,7 @@ post '/bookmark' do
            @ids.push(@param)
     #     end
   end
-  erb "id selected: <%= @ids %>"
+  erb "id selected: <%= @ids -%>"
 
   # link_regex = /(http:\S+)/    
   #   links = tweet['text'].scan(link_regex)[0]
