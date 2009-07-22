@@ -88,9 +88,9 @@ end
 post '/bookmark' do
   @client.favorites.each do |tweet|
     if params["#{tweet['id']}"].nil?
-      erb 'nil'
+      erb "nil"
     else
-      erb 'not nil'
+      erb "not nil"
     end
   end
 end
