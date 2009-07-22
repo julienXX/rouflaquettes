@@ -88,7 +88,7 @@ end
 post '/bookmark' do
   @ids = Array.new
   @client.favorites.each do |tweet|
-  if params[:"#{tweet['id']}"] != 0
+  if params["#{tweet['id']}"].nil?
     @ids.push('toto')
   else
     @ids.push('fuck')
