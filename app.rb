@@ -92,10 +92,10 @@ post '/bookmark' do
     # if params["check_#{tweet['id']}"].nil?
     #       @ids.push(@param)
     #     else
-    #       @ids.push(@param)
+           @ids.push(@param)
     #     end
   end
-  erb "id selected: <%= @param %>"
+  erb "id selected: <%= @ids %>"
 
   # link_regex = /(http:\S+)/    
   #   links = tweet['text'].scan(link_regex)[0]
