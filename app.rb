@@ -90,12 +90,11 @@ post '/bookmark' do
   
   @client.favorites.each do |tweet|
     if params["check_#{tweet['id']}"].nil?
-      redirect '/timeline'
+      erb "No tweets selected!"
     else
       @ids << tweet['id']
     end
   end
-  
   if @ids.empty?
     erb "No tweets selected!"
   else
