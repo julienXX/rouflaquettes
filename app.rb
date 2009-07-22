@@ -90,6 +90,7 @@ post '/bookmark' do
   
   @client.favorites.each do |tweet|
     if params["check_#{tweet['id']}"].nil?
+      @ids.push("#{tweet['id']}")
       next
     else
       @ids.push("#{tweet['id']}")
