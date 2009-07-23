@@ -95,14 +95,7 @@ post '/bookmark' do
     link_regex = /(http:\S+)/    
     links = tweet.scan(link_regex)[0]
     content = tweet.gsub(link_regex, '')
-
+    #Post to del.icio.us
     delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
   end
 end
-
-
-      #link_regex = /(http:\S+)/    
-      #links = tweet['text'].scan(link_regex)[0]
-      #content = tweet['text'].gsub(link_regex, '')
-
-      #delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
