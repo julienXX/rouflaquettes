@@ -89,7 +89,7 @@ post '/bookmark' do
   @statuses = Array.new
   params[:tweets].each do |tweet|
     @statuses.push(tweet)
-    @statuses.push(\n)
+    @statuses.push("\n")
   end if params[:tweets]
   
   @statuses.each do |status|
