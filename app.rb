@@ -92,8 +92,12 @@ post '/bookmark' do
     @statuses.push("\n")
   end if params[:tweets]
   
-  @statuses.each do |status|
-    erb "selected: <%= status %>"
+  @statuses.each do |tweet|
+    link_regex = /(http:\S+)/    
+    links = tweet['text'].scan(link_regex)[0]
+    content = tweet['text'].gsub(link_regex, '')
+
+    delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
   end
 end
 
