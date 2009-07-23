@@ -93,7 +93,7 @@ post '/bookmark' do
   end if params[:tweets]
   
   @ids.each do |id|
-    erb "selected: <%= status.id %>"
+    erb "selected: <%= status(id) %>"
   end
 end
 
