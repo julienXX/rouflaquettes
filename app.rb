@@ -91,7 +91,10 @@ post '/bookmark' do
     @ids.push(tweet)
     @ids.push(',')
   end if params[:tweets]
-  erb "selected: <%= @ids %>"
+  
+  @ids.each do |id|
+    erb "selected: <%= status.id %>"
+  end
 end
 
 
