@@ -86,14 +86,14 @@ get '/disconnect' do
 end
 
 post '/bookmark' do
-  @ids = Array.new
+  @statuses = Array.new
   params[:tweets].each do |tweet|
-    @ids.push(tweet)
-    @ids.push(',')
+    @statuses.push(tweet)
+    @statuses.push(\n)
   end if params[:tweets]
   
-  @ids.each do |id|
-    erb "selected: <%= status(id) %>"
+  @statuses.each do |status|
+    erb "selected: <%= status %>"
   end
 end
 
