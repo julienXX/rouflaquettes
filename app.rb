@@ -44,6 +44,12 @@ get '/timeline' do
 end
 
 get '/timeline/:page' do
+  before do
+    params[:tweets].each do |tweet|
+      @statuses.push(tweet)
+    end if params[:tweets]
+  end
+  
   @page = params[:page]
   @tweets = @client.favorites(params[:page])
   erb :timeline
@@ -83,12 +89,6 @@ get '/disconnect' do
   session[:access_token] = nil
   session[:secret_token] = nil
   redirect '/'
-end
-
-post '/next' do
-  params[:tweets].each do |tweet|
-    @statuses.push(tweet)
-  end if params[:tweets]
 end
 
 post '/bookmark' do

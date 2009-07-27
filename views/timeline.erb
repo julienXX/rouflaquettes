@@ -28,9 +28,6 @@
   </div>
   
   <div style="float: right">
-    <% params[:tweets].each do |tweet| %>
-      <% @statuses.push(tweet) %>
-    <% end if params[:tweets] %>
     <a href="http://sideburns.heroku.com/timeline/<%= @page.to_i + 1 %>">Next page</a>
   </div>
   
