@@ -92,7 +92,7 @@ post '/next' do
   redirect '/timeline/:page+1'
 end
 
-post '/bookmark' do
+post '/confirm' do
   params[:tweets].each do |tweet|
     @statuses.push(tweet)
   end if params[:tweets]
