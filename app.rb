@@ -85,6 +85,13 @@ get '/disconnect' do
   redirect '/'
 end
 
+post '/next' do
+  params[:tweets].each do |tweet|
+    @statuses.push(tweet)
+  end if params[:tweets]
+  redirect '/timeline/:page'
+end
+
 post '/bookmark' do
   params[:tweets].each do |tweet|
     @statuses.push(tweet)
@@ -99,8 +106,3 @@ post '/bookmark' do
   end
 end
 
-post '/next' do
-  params[:tweets].each do |tweet|
-    @statuses.push(tweet)
-  end if params[:tweets]
-end
