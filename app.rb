@@ -91,7 +91,7 @@ post '/next' do
   end if params[:tweets]
 end
 
-post '/confirm' do
+post '/bookmark' do
   params[:tweets].each do |tweet|
     @statuses.push(tweet)
   end if params[:tweets]
