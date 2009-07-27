@@ -1,5 +1,5 @@
 <div class="timeline">
-  <form method="post" action="/next">
+  <form method="post" action="/bookmark">
   <% @tweets.each do |status| %>
     <p>
     <div style="float:left; margin:5px">
@@ -28,6 +28,9 @@
   </div>
   
   <div style="float: right">
+    <% params[:tweets].each do |tweet| %>
+      <% @statuses.push(tweet) %>
+    <% end if params[:tweets] %>
     <a href="http://sideburns.heroku.com/timeline/<%= @page.to_i + 1 %>">Next page</a>
   </div>
   

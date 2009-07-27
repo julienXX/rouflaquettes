@@ -89,7 +89,6 @@ post '/next' do
   params[:tweets].each do |tweet|
     @statuses.push(tweet)
   end if params[:tweets]
-  redirect '/timeline/<%=@page.to_i+1%>'
 end
 
 post '/confirm' do
