@@ -1,5 +1,5 @@
 <div class="timeline">
-  <form method="post" action="/bookmark">
+  <form>
   <% @tweets.each do |status| %>
     <p>
     <div style="float:left; margin:5px">
@@ -14,7 +14,7 @@
     </div>
       
     <div style="float: right">
-      <input type="checkbox" name="tweets[]" value="<%= status['text'].to_s %>">
+      <input type="checkbox" name="tweets[checked[]]" value="<%= status['text'].to_s %>">
     </div>
       
     <br clear="all"/>
@@ -28,10 +28,8 @@
   </div>
   
   <div style="float: right">
-    <form action="/next" method="POST">
     <!-- <a href="http://sideburns.heroku.com/timeline/<%= @page.to_i + 1 %>">Next page</a> -->
-    <input style="font-size:20px" type="submit" value="next"/>
-    </form>
+    <input style="font-size:20px" type="submit" value="next" name="tweets[tobook]"/>
   </div>
   
   <br clear="all"/>

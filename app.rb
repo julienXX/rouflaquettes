@@ -86,15 +86,15 @@ get '/disconnect' do
 end
 
 post '/next' do
-  params[:tweets].each do |tweet|
+  params['tweets']['checked[]'].each do |tweet|
     @statuses.push(tweet)
-  end if params[:tweets]
+  end if params['tweets']['checked[]']
 end
 
 post '/bookmark' do
-  params[:tweets].each do |tweet|
+  params['tweets']['tobook'].each do |tweet|
     @statuses.push(tweet)
-  end if params[:tweets]
+  end if params['tweets']['tobook']
     
   @statuses.each do |tweet|
     link_regex = /(http:\S+)/    
