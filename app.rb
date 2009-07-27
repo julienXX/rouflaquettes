@@ -30,7 +30,6 @@ before do
   end
   content_type CONTENT_TYPES[request_uri], :charset => 'utf-8'
   
-  @statuses = Array.new
   @page = 1
 end
 
@@ -41,19 +40,10 @@ end
 
 get '/timeline' do
   @tweets = @client.favorites
-  
-  params[:tweets].each do |tweet|
-    @statuses.push(tweet)
-  end if params[:tweets]
-  
   erb :timeline
 end
 
 get '/timeline/:page' do
-  params[:tweets].each do |tweet|
-    @statuses.push(tweet)
-  end if params[:tweets]
-  
   @page = params[:page]
   @tweets = @client.favorites(params[:page])
   erb :timeline
@@ -96,6 +86,7 @@ get '/disconnect' do
 end
 
 post '/bookmark' do
+  @statuses = Array.new
   
   params[:tweets].each do |tweet|
     @statuses.push(tweet)
@@ -108,4 +99,10 @@ post '/bookmark' do
     #Post to del.icio.us
     delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
   end
+end
+
+post '/next' do
+  params[:tweets].each do |tweet|
+    @statuses.push(tweet)
+  end if params[:tweets]
 end
