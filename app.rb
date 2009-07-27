@@ -85,10 +85,11 @@ get '/disconnect' do
   redirect '/'
 end
 
-post '/timeline/*' do
+post '/next' do
   params[:tweets].each do |tweet|
     @statuses.push(tweet)
   end if params[:tweets]
+  redirect '/timeline/:page+1'
 end
 
 post '/bookmark' do
