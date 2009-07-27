@@ -29,7 +29,7 @@ before do
     else          :html
   end
   content_type CONTENT_TYPES[request_uri], :charset => 'utf-8'
-  
+  @statuses = Array.new
   @page = 1
 end
 
@@ -86,8 +86,6 @@ get '/disconnect' do
 end
 
 post '/bookmark' do
-  @statuses = Array.new
-  
   params[:tweets].each do |tweet|
     @statuses.push(tweet)
   end if params[:tweets]
