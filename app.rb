@@ -89,6 +89,7 @@ post '/next' do
   params['tweets']['checked[]'].each do |tweet|
     @statuses.push(tweet)
   end if params['tweets']['checked[]']
+  redirect '/timeline/:page'
 end
 
 post '/bookmark' do
