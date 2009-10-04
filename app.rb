@@ -8,7 +8,7 @@ require 'erb'
 CONTENT_TYPES = {:html => 'text/html', :css => 'text/css', :js  => 'application/javascript'}
 
 # Del.icio.us Auth
-delicious = WWW::Delicious.new('julienTEST', 'mikros0')
+delicious = WWW::Delicious.new('username', 'password')
 
 configure do
   set :sessions, true
@@ -17,8 +17,8 @@ end
 before do
   @user = session[:user]
   @client = TwitterOAuth::Client.new(
-    :consumer_key => 'Ob88dhyY3G6F04NgHZrCA', #replace with your own consumer key
-    :consumer_secret => 'WbWsanzbO8WRcghMBSByIasp7Lyzg63huvYxTGDIw', #replace with your own consumer secret
+    :consumer_key => 'key', #replace with your own consumer key
+    :consumer_secret => 'secret', #replace with your own consumer secret
     :token => session[:access_token],
     :secret => session[:secret_token]
   )
