@@ -16,8 +16,8 @@ end
 before do
   @user = session[:user]
   @client = TwitterOAuth::Client.new(
-    :consumer_key => 'YSoBZYHBsvtLKU2HYEulLQ', #replace with your own consumer key
-    :consumer_secret => 'PF3d95LMLEZQuzHBuPt5hge3RlflOc8MrGSw7GqkHcc', #replace with your own consumer secret
+    :consumer_key => 'YBGng9kTZfS468xpgGZLQ', #replace with your own consumer key
+    :consumer_secret => 'SPIgocS5LZZiewOlwCM5pLypjdDfPEIi5VxtNKGYnuM', #replace with your own consumer secret
     :token => session[:access_token],
     :secret => session[:secret_token]
   )
