@@ -68,7 +68,7 @@ get '/auth' do
       session[:access_token] = @access_token.token
       session[:secret_token] = @access_token.secret
       session[:user] = true
-      redirect '/timeline'
+      redirect '/d_auth'
     else
       redirect '/'
   end
