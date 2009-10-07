@@ -39,17 +39,15 @@ get '/' do
 end
 
 get '/timeline' do
+  def make_link do |t|
+    t.gsub /((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/, %Q{<a href="\\1">\\1</a>}
+  end
+  
   @tweets = @client.favorites
   erb :timeline
 end
 
 get '/timeline/:page' do
-  before do
-    params[:tweets].each do |tweet|
-      @statuses.push(tweet)
-    end if params[:tweets]
-  end
-  
   @page = params[:page]
   @tweets = @client.favorites(params[:page])
   erb :timeline
@@ -102,7 +100,6 @@ post '/bookmark' do
     content = tweet.gsub(link_regex, '')
     #Post to del.icio.us
     #delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
-    tweet
   end
 end
 
