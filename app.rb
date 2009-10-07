@@ -31,10 +31,6 @@ before do
   content_type CONTENT_TYPES[request_uri], :charset => 'utf-8'
   @statuses = Array.new
   @page = 1
-  
-  def make_link(t)
-    t.gsub(/((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/, %Q{<a href="\\1">\\1</a>})
-  end
 end
 
 get '/' do
@@ -100,6 +96,12 @@ post '/bookmark' do
     content = tweet.gsub(link_regex, '')
     #Post to del.icio.us
     #delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
+  end
+end
+
+helpers do
+  def make_link(t)
+    t.gsub(/((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/, %Q{<a href="\\1">\\1</a>})
   end
 end
 
