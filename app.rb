@@ -7,8 +7,7 @@ require 'erb'
 
 CONTENT_TYPES = {:html => 'text/html', :css => 'text/css', :js  => 'application/javascript'}
 
-# Del.icio.us Auth
-delicious = WWW::Delicious.new('julienTEST', 'mikros0')
+
 
 configure do
   set :sessions, true
@@ -39,13 +38,13 @@ get '/' do
 end
 
 get '/timeline' do
-  @tweets = @client.favorites
+  @tweets = @client.favorites.gsub(/((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/, %Q{<a href="\\1">\\1</a>})
   erb :timeline
 end
 
 get '/timeline/:page' do
   @page = params[:page]
-  @tweets = @client.favorites(params[:page])
+  @tweets = @client.favorites(params[:page]).gsub(/((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/, %Q{<a href="\\1">\\1</a>})
   erb :timeline
 end
 
