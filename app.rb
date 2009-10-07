@@ -31,6 +31,10 @@ before do
   content_type CONTENT_TYPES[request_uri], :charset => 'utf-8'
   @statuses = Array.new
   @page = 1
+  
+  def make_link(t)
+    t.gsub(/((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/, %Q{<a href="\\1">\\1</a>})
+  end
 end
 
 get '/' do
@@ -39,10 +43,6 @@ get '/' do
 end
 
 get '/timeline' do
-  def make_link(t)
-    t.gsub(/((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/, %Q{<a href="\\1">\\1</a>})
-  end
-  
   @tweets = @client.favorites
   erb :timeline
 end
