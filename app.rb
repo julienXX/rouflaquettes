@@ -8,7 +8,6 @@ require 'erb'
 CONTENT_TYPES = {:html => 'text/html', :css => 'text/css', :js  => 'application/javascript'}
 
 
-
 configure do
   set :sessions, true
 end
@@ -69,7 +68,7 @@ get '/auth' do
       session[:access_token] = @access_token.token
       session[:secret_token] = @access_token.secret
       session[:user] = true
-      redirect '/d_auth'
+      redirect '/timeline'
     else
       redirect '/'
   end
@@ -91,29 +90,21 @@ end
 post '/d_auth' do
   session[:d_name] = params[:d_name]
   session[:d_password] = params[:d_password]
-  #@d_user = WWW::Delicious.new(params[:d_name], params[:d_password])
   redirect '/timeline'
 end
 
 post '/bookmark' do
   delicious = WWW::Delicious.new(session[:d_name], session[:d_password])
   
-    params[:tweets].each do |tweet|
-      @statuses.push(tweet)
-    end if params[:tweets]
+  params[:tweets].each do |tweet|
+    @statuses.push(tweet)
+  end if params[:tweets]
     
-    @statuses.each do |tweet|
-      link_regex = /(http:\S+)/    
-      links = tweet.scan(link_regex)[0]
-      content = tweet.gsub(link_regex, '')
-      #Post to del.icio.us
-      delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
-    end
-end
-
-helpers do
-  def make_link(t)
-    t.gsub(/((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/, %Q{<a href="\\1">\\1</a>})
+  @statuses.each do |tweet|
+    link_regex = /(http:\S+)/    
+    links = tweet.scan(link_regex)[0]
+    content = tweet.gsub(link_regex, '')
+    #Post to del.icio.us
+    delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
   end
 end
-
