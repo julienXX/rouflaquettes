@@ -90,14 +90,15 @@ get '/d_auth' do
 end
 
 post '/d_auth' do
-  # session[:d_name] = params[:d_name]
-  #   session[:d_password] = params[:d_password]
-  @d_user = WWW::Delicious.new(params[:d_name], params[:d_password])
+  session[:d_name] = params[:d_name]
+  session[:d_password] = params[:d_password]
+  #@d_user = WWW::Delicious.new(params[:d_name], params[:d_password])
   redirect '/timeline'
 end
 
 post '/bookmark' do
-  if @d_user
+  delicious = = WWW::Delicious.new(session[:d_name], session[:d_password])
+  
     params[:tweets].each do |tweet|
       @statuses.push(tweet)
     end if params[:tweets]
@@ -107,11 +108,8 @@ post '/bookmark' do
       links = tweet.scan(link_regex)[0]
       content = tweet.gsub(link_regex, '')
       #Post to del.icio.us
-      #delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
+      delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
     end
-  else
-    redirect '/d_auth'
-  end
 end
 
 helpers do
