@@ -70,7 +70,7 @@ get '/auth' do
       session[:access_token] = @access_token.token
       session[:secret_token] = @access_token.secret
       session[:user] = true
-      redirect '/timeline'
+      redirect '/d_auth'
     else
       redirect '/'
   end
@@ -86,13 +86,14 @@ get '/disconnect' do
 end
 
 get '/d_auth' do
-  @d_user = WWW::Delicious.new(params[:d_name], params[:d_password])
   erb :d_auth
 end
 
 post '/d_auth' do
+  # session[:d_name] = params[:d_name]
+  #   session[:d_password] = params[:d_password]
   @d_user = WWW::Delicious.new(params[:d_name], params[:d_password])
-  redirect '/bookmark'
+  redirect '/timeline'
 end
 
 post '/bookmark' do
