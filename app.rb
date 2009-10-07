@@ -40,12 +40,14 @@ end
 
 get '/timeline' do
   @tweets = @client.favorites
+  @tweets['text'].make_link
   erb :timeline
 end
 
 get '/timeline/:page' do
   @page = params[:page]
   @tweets = @client.favorites(params[:page])
+  @tweets['text'].make_link
   erb :timeline
 end
 
