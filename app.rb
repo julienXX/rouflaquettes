@@ -90,6 +90,11 @@ get '/d_auth' do
   erb :d_auth
 end
 
+post '/d_auth' do
+  @d_user = WWW::Delicious.new(params[:d_name], params[:d_password])
+  redirect '/bookmark'
+end
+
 post '/bookmark' do
   if @d_user
     params[:tweets].each do |tweet|
