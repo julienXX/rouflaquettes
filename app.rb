@@ -68,7 +68,7 @@ get '/auth' do
       # in this session.  In a larger app you would probably persist these details somewhere.
       session[:access_token] = @access_token.token
       session[:secret_token] = @access_token.secret
-      session[:user] = 'true'
+      session[:user] = true
       redirect '/d_auth'
     else
       redirect '/'
