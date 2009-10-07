@@ -38,13 +38,13 @@ get '/' do
 end
 
 get '/timeline' do
-  @tweets = @client.favorites.gsub(/((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/, %Q{<a href="\\1">\\1</a>})
+  @tweets = @client.favorites
   erb :timeline
 end
 
 get '/timeline/:page' do
   @page = params[:page]
-  @tweets = @client.favorites(params[:page]).gsub(/((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/, %Q{<a href="\\1">\\1</a>})
+  @tweets = @client.favorites(params[:page])
   erb :timeline
 end
 
