@@ -33,7 +33,7 @@ before do
 end
 
 get '/' do
-  redirect '/timeline' if @user
+  redirect '/timeline' if @user?
   erb :index
 end
 
