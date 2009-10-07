@@ -97,7 +97,7 @@ post '/d_auth' do
 end
 
 post '/bookmark' do
-  delicious = = WWW::Delicious.new(session[:d_name], session[:d_password])
+  delicious = WWW::Delicious.new(session[:d_name], session[:d_password])
   
     params[:tweets].each do |tweet|
       @statuses.push(tweet)
