@@ -14,7 +14,7 @@ configure do
 end
 
 before do
-  @user = 0 #session[:user]
+  @user = session[:user]
   @client = TwitterOAuth::Client.new(
     :consumer_key => 'YBGng9kTZfS468xpgGZLQ', #replace with your own consumer key
     :consumer_secret => 'SPIgocS5LZZiewOlwCM5pLypjdDfPEIi5VxtNKGYnuM', #replace with your own consumer secret
@@ -68,7 +68,7 @@ get '/auth' do
       # in this session.  In a larger app you would probably persist these details somewhere.
       session[:access_token] = @access_token.token
       session[:secret_token] = @access_token.secret
-      session[:user] = 1
+      session[:user] = 'true'
       redirect '/d_auth'
     else
       redirect '/'
