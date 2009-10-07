@@ -85,17 +85,25 @@ get '/disconnect' do
   redirect '/'
 end
 
+get '/d_auth' do
+  @d_user = WWW::Delicious.new(params[:d_name], params[:d_password])
+  erb :d_auth
+end
+
 post '/bookmark' do
-  params[:tweets].each do |tweet|
-    @statuses.push(tweet)
-  end if params[:tweets]
+  if @d_user
+    params[:tweets].each do |tweet|
+      @statuses.push(tweet)
+    end if params[:tweets]
     
-  @statuses.each do |tweet|
-    link_regex = /(http:\S+)/    
-    links = tweet.scan(link_regex)[0]
-    content = tweet.gsub(link_regex, '')
-    #Post to del.icio.us
-    #delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
+    @statuses.each do |tweet|
+      link_regex = /(http:\S+)/    
+      links = tweet.scan(link_regex)[0]
+      content = tweet.gsub(link_regex, '')
+      #Post to del.icio.us
+      #delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
+  else
+    redirect '/d_auth'
   end
 end
 
