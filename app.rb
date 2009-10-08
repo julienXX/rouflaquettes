@@ -90,11 +90,11 @@ end
 post '/d_auth' do
   session[:d_name] = params[:d_name]
   session[:d_password] = params[:d_password]
-  redirect '/timeline'
+  redirect '/timeline', 307
 end
 
 post '/bookmark' do
-  delicious = WWW::Delicious.new(params[:d_name], params[:d_password])
+  delicious = WWW::Delicious.new(session[:d_name], session[:d_password])
   
   params[:tweets].each do |tweet|
     @statuses.push(tweet)
