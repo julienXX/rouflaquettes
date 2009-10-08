@@ -1,7 +1,7 @@
 $(document).ready(function() {
   
   $('#del').hide();
-  $('input[type=submit]').click(function() {
+  $('input[id='bookmark']').click(function() {
            $('#del').show();
          });
      });
