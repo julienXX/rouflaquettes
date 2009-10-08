@@ -1,4 +1,6 @@
 <div class="timeline">
+  <form method="post" action="bookmark">
+  
   <% @tweets.each do |status| %>
     <p>
     <div style="float:left; margin:5px">
@@ -41,7 +43,6 @@
   </div>
   
   <div id="myOnPageContent" style='display:none;'>
-    <form method="post" action="bookmark">
       <p align="center">
 
       <input style="font-size:20px" type="text" size=24 name="d_name" value="username"/><br/>
@@ -51,7 +52,6 @@
       <p align="center">
       <input style="font-size:30px" type="submit" value="Continue"/>
       </p>
-    </form>
   </div>
-  
+  </form>
 </div>
