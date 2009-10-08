@@ -83,7 +83,7 @@ get '/disconnect' do
   redirect '/'
 end
 
-get '/delicious_auth' do
+get '/d_auth' do
   erb :d_auth
 end
 
