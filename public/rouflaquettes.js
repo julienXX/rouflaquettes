@@ -1,5 +1,6 @@
 $(document).ready(function() {
   $('#del').hide();
-  $('form').submit(function() { $('#del').show(); });
-  $('input[type=submit]').click();
+  $('input[type=submit]').click(function() {
+       $('#del').show();
+     });
  });
