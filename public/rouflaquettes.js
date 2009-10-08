@@ -4,5 +4,4 @@ $(document).ready(function() {
   $('input[id=bookmark]').click(function() {
            $('#del').show();
          });
-     });
 });
