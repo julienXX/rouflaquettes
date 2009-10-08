@@ -1,5 +1,6 @@
 $(document).ready(function() {
-   $('input[type=submit]').bind('submit', function() {
-     alert("Hello world!");
+  $('div[id=delicious_credentials]').hide
+  $('input[type=submit]').bind('submit',function() {
+     $('div[id=delicious_credentials]').show;
    });
  });
