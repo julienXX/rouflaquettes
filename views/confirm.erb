@@ -1,7 +1,7 @@
 <div class ="timeline" id="confirm">
-    <h2>The following bookmarks have been added to your del.icio.us account:</h2>
+    <h1>The following bookmarks have been added to your del.icio.us account:</h1>
     
-    <% @statuses.each do |status| %>
+    <% session['tweets[]'].each do |status| %>
       <p>
       <div style="float:left; margin:5px">
         <%= status %>

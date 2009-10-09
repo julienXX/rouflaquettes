@@ -102,6 +102,6 @@ post '/bookmark' do
     #Post to del.icio.us
     delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
   end
-  
+  session['tweets[]'] = @statuses
   redirect '/confirm'
 end
