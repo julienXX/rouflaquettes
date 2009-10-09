@@ -10,7 +10,7 @@ $(document).ready(function(){
 
   $('#del').hide();
 
-  $('a').click(function(){
+  $('a#del_show').click(function(){
     $('#del').show('slow');
   });
 
