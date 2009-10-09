@@ -96,8 +96,6 @@ post '/bookmark' do
     
   end if params[:tweets]
   
-  session[:statuses] = @statuses
-   
   @statuses.each do |tweet|
     link_regex = /(http:\S+)/    
     links = tweet.scan(link_regex)[0]

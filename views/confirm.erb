@@ -1,21 +1,14 @@
 <div id="confirm">
     <h2>The following bookmarks have been added to your del.icio.us account:</h2>
     
-    <% session[:statuses].each do |status| %>
+    <% @statuses.each do |status| %>
       <p>
       <div style="float:left; margin:5px">
-        <a href="http://twitter.com/<%= status['user']['screen_name'] %>">
-        <img src="<%= status['user']['profile_image_url'] %>" width="32" height="32"/>
-        </a>
+        #{status}
       </div>
 
-      <div style="">
-        <a href="http://twitter.com/<%= status['user']['screen_name'] %>">@<%= status['user']['screen_name'] %></a>
-        <%= status['text'].gsub /((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/, %Q{<a href="\\1">\\1</a>} %>
-      </div>
-
-      <br clear="all"/>
-      </p>
+    <br clear="all"/>
+    
     <% end %>
     
 </div>
