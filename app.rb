@@ -94,13 +94,8 @@ post '/d_auth' do
 end
 
 post '/bookmark' do
-<<<<<<< HEAD
-  session[:d_name] = params[:d_name]
-  session[:d_password] = params[:d_password]
-  delicious = WWW::Delicious.new(params[:d_name], params[:d_password])
-=======
+
   delicious = WWW::Delicious.new(session[:d_name], session[:d_password])
->>>>>>> b80c21a... ajaxify stuff
   
   params[:tweets].each do |tweet|
     @statuses.push(tweet)
