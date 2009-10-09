@@ -83,14 +83,8 @@ get '/disconnect' do
   redirect '/'
 end
 
-get '/d_auth' do
-  erb :d_auth, :layout => false
-end
-
-post '/d_auth' do
-  session[:d_name] = params[:d_name]
-  session[:d_password] = params[:d_password]
-  redirect '/bookmark', 307
+get '/confirm' do
+  erb :confirm
 end
 
 post '/bookmark' do
@@ -99,6 +93,7 @@ post '/bookmark' do
   
   params[:tweets].each do |tweet|
     @statuses.push(tweet)
+    session[:statuses].push(tweet)
   end if params[:tweets]
     
   @statuses.each do |tweet|
@@ -108,4 +103,5 @@ post '/bookmark' do
     #Post to del.icio.us
     delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
   end
+  redirect '/confirm'
 end
