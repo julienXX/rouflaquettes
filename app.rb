@@ -93,9 +93,11 @@ post '/bookmark' do
   
   params[:tweets].each do |tweet|
     @statuses.push(tweet)
-    session[:statuses].push(tweet)
-  end if params[:tweets]
     
+  end if params[:tweets]
+  
+  session[:statuses] = @statuses
+   
   @statuses.each do |tweet|
     link_regex = /(http:\S+)/    
     links = tweet.scan(link_regex)[0]
