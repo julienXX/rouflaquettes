@@ -93,7 +93,6 @@ post '/bookmark' do
   
   params[:tweets].each do |tweet|
     @statuses.push(tweet)
-    
   end if params[:tweets]
   
   @statuses.each do |tweet|
@@ -103,5 +102,6 @@ post '/bookmark' do
     #Post to del.icio.us
     delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
   end
+  
   redirect '/confirm'
 end
