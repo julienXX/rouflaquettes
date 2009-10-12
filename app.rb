@@ -91,22 +91,32 @@ get '/d_auth' do
   erb :d_auth, :layout => false
 end
 
+post 'delicious_auth' do
+  session[:d_name] = params['d_name']
+  session[:d_password] = params['d_password']
+end
+
 
 post '/bookmark' do
+  if session[:d_name].nil? or session[:d_password].nil? do
+    redirect '/d_auth'
+  else
+    delicious = WWW::Delicious.new(session[:d_name], session[:d_password])
 
-  delicious = WWW::Delicious.new(params[:d_name], params[:d_password])
-  
-  params[:tweets].each do |tweet|
-    @statuses.push(tweet)
-  end if params[:tweets]
-  
-  @statuses.each do |tweet|
-    link_regex = /(http:\S+)/    
-    links = tweet.scan(link_regex)[0]
-    content = tweet.gsub(link_regex, '')
-    #Post to del.icio.us
-    delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
+    params[:tweets].each do |tweet|
+      @statuses.push(tweet)
+    end if params[:tweets]
+
+    @statuses.each do |tweet|
+      link_regex = /(http:\S+)/    
+      links = tweet.scan(link_regex)[0]
+      content = tweet.gsub(link_regex, '')
+      #Post to del.icio.us
+      delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
+    end
+    session['tweets[]'] = @statuses
+    redirect '/confirm'
   end
-  session['tweets[]'] = @statuses
-  redirect '/confirm'
+  end
+    
 end
