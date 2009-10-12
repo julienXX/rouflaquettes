@@ -35,12 +35,12 @@ h2 {font-size:24px;}
 }
 
 .del {
-  background: #4f4f4f;
+  background: #000000;
   height: 100%;,
   color: #FFF;
   padding: 15px 35px;
 }
 
 .del h1 {
-	color: #b1ff87;
+	color: #7dbb3e;
 }
