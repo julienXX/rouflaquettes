@@ -98,7 +98,7 @@ end
 
 
 post '/bookmark' do
-  if session[:d_name].nil? or session[:d_password].nil? do
+  if session[:d_name].nil?
     redirect '/d_auth'
   else
     delicious = WWW::Delicious.new(session[:d_name], session[:d_password])
@@ -114,6 +114,7 @@ post '/bookmark' do
       #Post to del.icio.us
       delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
     end
+    
     session['tweets[]'] = @statuses
     redirect '/confirm'
   end
