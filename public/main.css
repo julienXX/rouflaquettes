@@ -43,8 +43,7 @@ h2 {font-size:24px;}
 	text-align: center;
 	margin: 0;
 	top: 0;
-	right: 300px;
-	position: relative;
+	position: absolute;
 }
 
 .del h1 {
