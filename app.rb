@@ -87,6 +87,11 @@ get '/confirm' do
   erb :confirm
 end
 
+get '/d_auth' do
+  erb :d_auth
+end
+
+
 post '/bookmark' do
 
   delicious = WWW::Delicious.new(params[:d_name], params[:d_password])
