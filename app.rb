@@ -117,6 +117,5 @@ post '/bookmark' do
     session['tweets[]'] = @statuses
     redirect '/confirm'
   end
-  end
-  end  
+ 
 end
