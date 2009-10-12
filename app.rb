@@ -88,7 +88,7 @@ get '/confirm' do
 end
 
 get '/d_auth' do
-  erb :d_auth
+  erb :d_auth, :layout => false
 end
 
 
