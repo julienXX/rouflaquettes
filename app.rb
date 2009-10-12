@@ -94,6 +94,7 @@ end
 post '/d_auth' do
   session[:d_name] = params['d_name']
   session[:d_password] = params['d_password']
+  redirect '/timeline'
 end
 
 
