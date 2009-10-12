@@ -91,7 +91,7 @@ get '/d_auth' do
   erb :d_auth, :layout => false
 end
 
-post 'delicious_auth' do
+post '/d_auth' do
   session[:d_name] = params['d_name']
   session[:d_password] = params['d_password']
 end
