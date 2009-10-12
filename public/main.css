@@ -36,8 +36,9 @@ h2 {font-size:24px;}
 
 .del {
   margin:0 auto;
-  background: black;
-  }
+  background: #4f4f4f;
+	color: white;
+}
 
 .del h1 {
 	color: #b1ff87;
