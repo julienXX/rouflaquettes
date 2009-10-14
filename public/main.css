@@ -60,5 +60,6 @@ h2 {font-size:24px;}
 	right: 300px;
 	left: 300px;
 	display: compact;
-	position: relative;
+	position: absolute;
+	float: right;
 }
