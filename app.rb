@@ -114,5 +114,6 @@ post '/bookmark' do
       #raise delicious auth error
     end
   end
+  end
  
 end
