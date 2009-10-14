@@ -58,8 +58,7 @@ h2 {font-size:24px;}
 	text-align: center;
 	border-style: solid;
 	border-color: red;
-	right: 300px;
-	left: 300px;
 	width: 800px;
 	position: absolute;
+	margin: auto;
 }
