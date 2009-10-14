@@ -110,10 +110,7 @@ post '/bookmark' do
     
       session['tweets[]'] = @statuses
       redirect '/confirm'
-    else
-      #raise delicious auth error
     end
-  end
   end
  
 end
