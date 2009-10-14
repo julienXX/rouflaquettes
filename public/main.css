@@ -50,3 +50,11 @@ h2 {font-size:24px;}
 .del h1 {
 	color: #7dbb3e;
 }
+
+.error {
+	color: red;
+	font-size: 14px;
+	text-align: center;
+	border-style: solid;
+	border-color: red;
+}
