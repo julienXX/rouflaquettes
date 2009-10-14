@@ -31,17 +31,34 @@
   <div style="float: right">
     <a href="http://rouflaquettes.heroku.com/timeline/<%= @page.to_i + 1 %>">Next page</a>
   </div>
-  </form>
+  
   <br clear="all"/>
   
   <div>
     <p align="center">
-      <a href="d_auth" class="pageslide" title="pageSlide Demo">Bookmark</a>
-      <!-- <a href="#delicious" id="del_show">Bookmark</a> -->
+      <!-- <a href="d_auth" class="pageslide" title="pageSlide Demo">Bookmark</a> -->
+      <a href="#delicious" id="del_show">Bookmark</a>
       
     </p>
   </div>
-  
+
+  <div class="del">
+
+    <p><h1>Enter your del.icio.us credentials</h1></p>
+
+      <p align="center">
+
+      <input style="font-size:20px" type="text" size=24 name="d_name" value="username"/><br/>
+      <input style="font-size:20px" type="password" size=24 name="d_password" value="password"/></p>
+      <p align="center">
+      <input type="checkbox" name="unfavorize"> Check to unfavoritize after bookmarking </p>
+      <p align="center">
+      <input style="font-size:30px" type="submit" value="Continue"/>
+      <a href="http://rouflaquettes.heroku.com/timeline" name="delicious">Cancel</a>
+
+      </p>
+  </div>
+
   <!--   <div id="del" style='display:none;'>
       
         <p align="center">
@@ -58,7 +75,7 @@
         
     </div> -->
   
-  <!-- </form> -->
+  </form>
 </div>
 
 <script type="text/javascript">
