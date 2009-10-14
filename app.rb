@@ -91,33 +91,28 @@ get '/d_auth' do
   erb :d_auth, :layout => false
 end
 
-post '/d_auth' do
-  session[:d_name] = params['d_name']
-  session[:d_password] = params['d_password']
-  redirect '/timeline'
-end
-
-
 post '/bookmark' do
-  if session[:d_name].nil?
-    redirect '/d_auth'
-  else
-    delicious = WWW::Delicious.new(session[:d_name], session[:d_password])
 
-    params[:tweets].each do |tweet|
-      @statuses.push(tweet)
-    end if params[:tweets]
-
-    @statuses.each do |tweet|
-      link_regex = /(http:\S+)/    
-      links = tweet.scan(link_regex)[0]
-      content = tweet.gsub(link_regex, '')
-      #Post to del.icio.us
-      delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
-    end
+    delicious = WWW::Delicious.new(params[:d_name], params[:d_password])
     
-    session['tweets[]'] = @statuses
-    redirect '/confirm'
+    unless delicious.valid_account?
+      params[:tweets].each do |tweet|
+        @statuses.push(tweet)
+      end if params[:tweets]
+
+      @statuses.each do |tweet|
+        link_regex = /(http:\S+)/    
+        links = tweet.scan(link_regex)[0]
+        content = tweet.gsub(link_regex, '')
+        #Post to del.icio.us
+        delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
+      end
+    
+      session['tweets[]'] = @statuses
+      redirect '/confirm'
+    else
+      #raise error
+    end
   end
  
 end

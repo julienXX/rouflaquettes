@@ -35,10 +35,10 @@ h2 {font-size:24px;}
 }
 
 .del {
-    background: #000000;
+    background: silver;
     height: 100%;,
     padding: 15px 35px;
-	color: #ebeaeb;
+	color: black;
 	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	text-align: center;
 	margin: 0;
