@@ -84,6 +84,7 @@ get '/disconnect' do
 end
 
 get '/confirm' do
+  session[:flash] = nil
   custom_render_erb(:confirm)
 end
 
