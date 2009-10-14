@@ -84,7 +84,7 @@ get '/disconnect' do
 end
 
 get '/confirm' do
-  erb :confirm
+  custom_render_erb(:confirm)
 end
 
 get '/d_auth' do
@@ -108,8 +108,7 @@ post '/bookmark' do
         delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
       end
       session['tweets[]'] = @statuses
-      #redirect '/confirm'
-      custom_render_erb(:confirm)
+      redirect '/confirm'
     else
       flash[:error] = "Invalid delicious credentials"
       redirect '/timeline'
