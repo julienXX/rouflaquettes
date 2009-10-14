@@ -32,7 +32,6 @@ h2 {font-size:24px;}
   margin: auto; 
   width:600px;
   border:1px;
-	top: 160px;
 }
 
 .del {
@@ -63,4 +62,7 @@ h2 {font-size:24px;}
 	display: compact;
 	position: absolute;
 	float: right;
+	margin-bottom: auto;
+	margin-top: auto;
+	margin: auto;
 }
