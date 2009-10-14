@@ -36,6 +36,17 @@ get '/' do
   erb :index
 end
 
+def flash
+  session[:flash] = {} if session[:flash] && session[:flash].class != Hash
+  session[:flash] ||= {}
+end
+
+def custom_render_erb(*args)
+  myerb = erb(*args)
+  flash.clear
+  myerb
+end
+
 get '/timeline' do
   @tweets = @client.favorites
   erb :timeline
@@ -110,6 +121,9 @@ post '/bookmark' do
     
       session['tweets[]'] = @statuses
       redirect '/confirm'
+    else
+      flash[:error] = "Invalid delicious credentials"
+      redirect '/timeline'
     end
   
  
