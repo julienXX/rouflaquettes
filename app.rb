@@ -63,14 +63,14 @@ get '/auth' do
   )
   
   if @client.authorized?
-      # Storing the access tokens so we don't have to go back to Twitter again
-      # in this session.  In a larger app you would probably persist these details somewhere.
-      session[:access_token] = @access_token.token
-      session[:secret_token] = @access_token.secret
-      session[:user] = true
-      redirect '/timeline'
-    else
-      redirect '/'
+    # Storing the access tokens so we don't have to go back to Twitter again
+    # in this session.  In a larger app you would probably persist these details somewhere.
+    session[:access_token] = @access_token.token
+    session[:secret_token] = @access_token.secret
+    session[:user] = true
+    redirect '/timeline'
+  else
+    redirect '/'
   end
 end
 
@@ -85,46 +85,35 @@ end
 
 get '/confirm' do
   session[:flash] = nil
-  custom_render_erb(:confirm)
-end
-
-get '/d_auth' do
-  erb :d_auth, :layout => false
+  erb :confirm
 end
 
 post '/bookmark' do
+  delicious = WWW::Delicious.new(params[:d_name], params[:d_password])
+  if delicious.valid_account?
+    params[:tweets].each do |tweet|
+      @statuses.push(tweet)
+    end if params[:tweets]
 
-    delicious = WWW::Delicious.new(params[:d_name], params[:d_password])
-    
-    if delicious.valid_account?
-      params[:tweets].each do |tweet|
-        @statuses.push(tweet)
-      end if params[:tweets]
-
-      @statuses.each do |tweet|
-        link_regex = /(http:\S+)/    
-        links = tweet.scan(link_regex)[0]
-        content = tweet.gsub(link_regex, '')
-        #Post to del.icio.us
-        delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
-      end
-      session['tweets[]'] = @statuses
-      redirect '/confirm'
-    else
-      flash[:error] = "Invalid delicious credentials"
-      redirect '/timeline'
+    @statuses.each do |tweet|
+      link_regex = /(http:\S+)/    
+      links = tweet.scan(link_regex)[0]
+      content = tweet.gsub(link_regex, '')
+      #Post to delicious
+      delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
     end
+    session['tweets[]'] = @statuses #For confirm page use
+    redirect '/confirm'
+  else
+    flash[:error] = "Invalid delicious credentials"
+    redirect '/timeline'
+  end
 end
 
 helpers do
+  #Flash notice helper
   def flash
     session[:flash] = {} if session[:flash] && session[:flash].class != Hash
     session[:flash] ||= {}
-  end
-
-  def custom_render_erb(*args)
-    myerb = erb(*args)
-    flash.clear
-    myerb
   end
 end
