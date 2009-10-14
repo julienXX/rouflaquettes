@@ -60,11 +60,4 @@ h2 {font-size:24px;}
 	border-color: red;
 	right: 300px;
 	left: 300px;
-	display: compact;
-	position: absolute;
-	float: right;
-	margin-bottom: auto;
-	margin-top: auto;
-	margin: auto;
-	z-index: 2;
-}
+	}
