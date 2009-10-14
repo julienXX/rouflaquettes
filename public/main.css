@@ -57,7 +57,7 @@ h2 {font-size:24px;}
 	text-align: center;
 	border-style: solid;
 	border-color: red;
-	position: fixed;
+	position: absolute;
 	right: 300px;
 	left: 300px;
 }
