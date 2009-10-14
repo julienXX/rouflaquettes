@@ -95,7 +95,7 @@ post '/bookmark' do
 
     delicious = WWW::Delicious.new(params[:d_name], params[:d_password])
     
-    unless delicious.valid_account?
+    unless delicious.valid_account
       params[:tweets].each do |tweet|
         @statuses.push(tweet)
       end if params[:tweets]
