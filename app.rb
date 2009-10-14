@@ -36,17 +36,6 @@ get '/' do
   erb :index
 end
 
-def flash
-  session[:flash] = {} if session[:flash] && session[:flash].class != Hash
-  session[:flash] ||= {}
-end
-
-def custom_render_erb(*args)
-  myerb = erb(*args)
-  flash.clear
-  myerb
-end
-
 get '/timeline' do
   @tweets = @client.favorites
   erb :timeline
@@ -121,11 +110,20 @@ post '/bookmark' do
         #Post to del.icio.us
         delicious.posts_add(:url => links[0], :title => content, :notes => 'Imported from Twitter')
       end
-    
       session['tweets[]'] = @statuses
       redirect '/confirm'
-      
     end
-  
- 
+end
+
+helpers do
+  def flash
+    session[:flash] = {} if session[:flash] && session[:flash].class != Hash
+    session[:flash] ||= {}
+  end
+
+  def custom_render_erb(*args)
+    myerb = erb(*args)
+    flash.clear
+    myerb
+  end
 end
