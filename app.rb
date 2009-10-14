@@ -116,7 +116,7 @@ helpers do
     session[:flash] = {} if session[:flash] && session[:flash].class != Hash
     session[:flash] ||= {}
   end
-  def htmlize do |t|
-    t.gsub /((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/, %Q{<a href="\\1">\\1</a>}
+  def htmlize(tweet)
+    tweet.gsub /((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/, %Q{<a href="\\1">\\1</a>}
   end
 end

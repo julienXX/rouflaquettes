@@ -12,7 +12,7 @@
     <div style="">
       <a href="http://twitter.com/<%= status['user']['screen_name'] %>">@<%= status['user']['screen_name'] %></a>
       <!-- <%= status['text'].gsub /((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/, %Q{<a href="\\1">\\1</a>} %> -->
-      <%= status['text'].htmlize %>
+      <%= htmlize(status['text']) %>
     </div>
       
     <div style="float: right">
