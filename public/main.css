@@ -59,7 +59,6 @@ h2 {font-size:24px;}
 	border-color: red;
 	right: 300px;
 	left: 300px;
-	overflow: auto;
-	display: block;
+	display: compact;
 	position: relative;
 }
