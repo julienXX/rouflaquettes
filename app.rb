@@ -106,7 +106,10 @@ post '/bookmark' do
 
     delicious = WWW::Delicious.new(params[:d_name], params[:d_password])
     
-    unless delicious.valid_account
+    unless delicious.valid_account?
+      flash[:error] = "Invalid delicious credentials"
+      redirect '/timeline'
+    else
       params[:tweets].each do |tweet|
         @statuses.push(tweet)
       end if params[:tweets]
@@ -121,9 +124,7 @@ post '/bookmark' do
     
       session['tweets[]'] = @statuses
       redirect '/confirm'
-    else
-      flash[:error] = "Invalid delicious credentials"
-      redirect '/timeline'
+      
     end
   
  
