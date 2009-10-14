@@ -22,10 +22,11 @@
     <h1>Convert your Twitter favorites to Del.icio.us bookmarks</h1>
   </div>
   
-  
-  <div class="error">
-    <%= flash[:error] %>
-  </div>
+  <% if flash[:error] %>
+    <div class="error">
+      <%= flash[:error] %>
+    </div>
+  <% end %>
           
   <%= yield %>
   

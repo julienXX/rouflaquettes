@@ -59,6 +59,6 @@ h2 {font-size:24px;}
 	border-style: solid;
 	border-color: red;
 	width: 800px;
-	position: absolute;
+	position: static;
 	margin: auto;
 }
